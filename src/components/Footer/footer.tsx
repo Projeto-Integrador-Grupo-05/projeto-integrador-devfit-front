@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { FacebookLogo, InstagramLogo, TiktokLogo, LinkedinLogo } from "@phosphor-icons/react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 px-4">
+    <footer className="bg-black text-white py-8 px-4yarn text-center p-4 mt-auto">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         
         <div>
@@ -17,9 +18,11 @@ const Footer = () => {
         
         
         <div className="flex flex-col items-center">
-          <img src="/logo.png" alt="Logo" className="w-32 mb-4" />
-          <h3 className="font-bold uppercase">Contato</h3>
-          <p className="mt-2">grupo05.gen@gmail.com</p>
+          <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo" className="w-36 mb-5" />
+          <h2 className="font-bold uppercase">Contato</h2>
+          <Link to =""><img src="https://i.imgur.com/FPir2GW.png" alt="Envelope"></img>grupo05.gen@gmail.com</Link>
+          <Link to =""><FacebookLogo size={30}/></Link>
+
         </div>
         
         

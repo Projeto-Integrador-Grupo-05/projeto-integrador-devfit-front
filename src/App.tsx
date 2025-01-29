@@ -10,11 +10,8 @@ function App() {
         <div className="min-h-[80vh]">
           <div className="min-h-screen flex flex-col">
             <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-            </Routes>
-            <Footer />
+            <Home/>
+            <Footer/>
           </div>
         </div>
       </BrowserRouter>

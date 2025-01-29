@@ -21,15 +21,15 @@ function Navbar (){
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-white text-2xl">
-                <i className="bi bi-globe-americas"></i>
+                <i></i>
               </Link>
     
               <nav>
                 <ul className="flex space-x-10">
-                  <li><Link to="/" className="text-white hover:text-gray-400">EXERCÍCIOS</Link></li>
-                  <li><Link to="/passagens" className="text-white hover:text-gray-400">TREINOS</Link></li>
-                  <li><Link to="/destinos" className="text-white hover:text-gray-400">ÁREA DO ALUNO</Link></li>
-                  <li><Link to="/blog" className="text-white hover:text-gray-400">MATRICULE - SE</Link></li>
+                  <li><Link to="/exercicios" className="text-white hover:text-gray-400">EXERCÍCIOS</Link></li>
+                  <li><Link to="/treinos" className="text-white hover:text-gray-400">TREINOS</Link></li>
+                  <li><Link to="/perfil" className="text-white hover:text-gray-400">ÁREA DO ALUNO</Link></li>
+                  <li><Link to="/cadastro" className="text-white hover:text-gray-400">MATRICULE - SE</Link></li>
                 </ul>
               </nav>
     
