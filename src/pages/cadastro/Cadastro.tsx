@@ -95,11 +95,11 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="usuario">Usuario</label>
+            <label htmlFor="email">Usuario</label>
             <input
               type="text"
-              id="usuario"
-              name="usuario"
+              id="email"
+              name="email"
               placeholder="Usuario"
               className="border-2 border-slate-700 rounded p-2"
               value={usuario.email}
