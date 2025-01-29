@@ -1,26 +1,39 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
-import Exercicios from "../../models/Exercicios";
-import { atualizar, buscar, cadastrar } from "../../services/Service";
+import { AuthContext } from "../../../context/AuthContext";
+import Tema from "../../../models/Tema";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
 
-function FormExercicios() {
+function FormTema() {
   const navigate = useNavigate();
 
-  const [exercicios, setExercicios] = useState<Exercicios>({} as Exercicios);
+  const [tema, setTema] = useState<Tema>({} as Tema);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
 
   const { id } = useParams<{ id: string }>();
 
   async function buscarPorId(id: string) {
     try {
-      await buscar(`/exercicios/${id}`, setExercicios);
+      await buscar(`/temas/${id}`, setTema, {
+        headers: { Authorization: token },
+      });
     } catch (error: any) {
       if (error.toString().includes("403")) {
-        console.error("Erro ao buscar Exercicioss:", error);
+        handleLogout();
       }
     }
   }
+
+  useEffect(() => {
+    if (token === "") {
+      alert("Você precisa estar logado!");
+      navigate("/");
+    }
+  }, [token]);
 
   useEffect(() => {
     if (id !== undefined) {
@@ -29,14 +42,14 @@ function FormExercicios() {
   }, [id]);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-    setExercicios({
-      ...exercicios,
+    setTema({
+      ...tema,
       [e.target.name]: e.target.value,
     });
   }
 
   function retornar() {
-    navigate("/exercicios");
+    navigate("/temas");
   }
 
   async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
@@ -45,20 +58,28 @@ function FormExercicios() {
 
     if (id !== undefined) {
       try {
-        await atualizar(`/exercicios`, exercicios, setExercicios);
-        alert("O Exercicios foi atualizado com sucesso!");
+        await atualizar(`/temas`, tema, setTema, {
+          headers: { Authorization: token },
+        });
+        alert("O Tema foi atualizado com sucesso!");
       } catch (error: any) {
         if (error.toString().includes("403")) {
-          alert("Erro ao atualizar o Exercicios.");
+          handleLogout();
+        } else {
+          alert("Erro ao atualizar o tema.");
         }
       }
     } else {
       try {
-        await cadastrar(`/Exercicios`, exercicios, setExercicios);
-        alert("O Exercicios foi cadastrado com sucesso!");
+        await cadastrar(`/temas`, tema, setTema, {
+          headers: { Authorization: token },
+        });
+        alert("O Tema foi cadastrado com sucesso!");
       } catch (error: any) {
         if (error.toString().includes("403")) {
-          alert("Erro ao cadastrar o Exercicios.");
+          handleLogout();
+        } else {
+          alert("Erro ao cadastrar o tema.");
         }
       }
     }
@@ -70,34 +91,23 @@ function FormExercicios() {
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">
-        {id === undefined ? "Cadastrar Exercicios" : "Editar Exercicios"}
+        {id === undefined ? "Cadastrar Tema" : "Editar Tema"}
       </h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Nome da Exercicios</label>
+          <label htmlFor="descricao">Descrição do Tema</label>
           <input
             type="text"
-            placeholder="Nome da Exercicios"
-            name="nome"
-            className="border-2 border-slate-700 rounded p-2"
-            value={exercicios.nome}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="descricao">Descrição do Exercicios</label>
-          <input
-            type="text"
-            placeholder="Descreva aqui seu Exercicios"
+            placeholder="Descreva aqui seu tema"
             name="descricao"
             className="border-2 border-slate-700 rounded p-2"
-            value={exercicios.descricao}
+            value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
         <button
-          className="rounded text-slate-100 bg-emerald-500 
+          className="rounded text-slate-100 bg-indigo-400 
                                hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
           type="submit"
         >
@@ -118,4 +128,4 @@ function FormExercicios() {
   );
 }
 
-export default FormExercicios;
+export default FormTema;
