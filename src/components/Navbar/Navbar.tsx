@@ -35,7 +35,7 @@ function Navbar (){
     
               <div>
                 <Link to="/contato">
-                  <button className="w-32 h-10 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded transition-all duration-200">
+                  <button className="w-32 h-10 bg-orange-400 hover:bg-orange-600 text-white font-bold rounded transition-all duration-200">
                     CONTATO
                   </button>
                 </Link>
@@ -45,6 +45,6 @@ function Navbar (){
         </header>
       );
     };
-    
+
 
 export default Navbar
