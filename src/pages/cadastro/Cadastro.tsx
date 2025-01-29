@@ -12,23 +12,23 @@ function Cadastro() {
 
   const [confirmaSenha, setConfirmaSenha] = useState<string>("");
 
-  const [usuario, setUsuario] = useState<Usuario>({
-    id: 0,
+  const [usuario, setUsuario] = useState({
+    //  id: 0,
     nome: "",
     email: "",
     senha: "",
-    altura: 0,
-    peso: 0,
-    objetivo: "",
-    tipo: "",
-    nivelFitness: "",
+    altura: 54,
+    peso: 34,
+    objetivo: "bagaefeaf",
+    tipo: "fwfqfqf",
+    nivelFitness: "fqwqfqwfwq",
   });
 
-  useEffect(() => {
-    if (usuario.id !== 0) {
-      retornar();
-    }
-  }, [usuario]);
+  // useEffect(() => {
+  //   if (usuario.id !== 0) {
+  //     retornar();
+  //   }
+  // }, [usuario]);
 
   function retornar() {
     navigate("/login");
@@ -95,12 +95,12 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="email">Usuario</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
               name="email"
-              placeholder="Usuario"
+              placeholder="Email"
               className="border-2 border-slate-700 rounded p-2"
               value={usuario.email}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
