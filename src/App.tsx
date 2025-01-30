@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Home from "./pages/home/Home";
 import Perfil from "./pages/perfil/Perfil";
 import Login from "./pages/login/Login";
+import Sobre from './pages/Sobre';
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
+              <Sobre />
             </Routes>
           </BrowserRouter>
         </AuthProvider>
