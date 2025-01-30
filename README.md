@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# Projeto Integrador - DevFit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Documentação 📊
 
-Currently, two official plugins are available:
+- [Apresentação](https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit/blob/main/docs/Apresenta%C3%A7%C3%A3o.pdf)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [DER](https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit/blob/main/docs/DER.mdj)
 
-## Expanding the ESLint configuration
+- [Escopo do Projeto](https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit/blob/main/docs/Escopo.docx)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Descrição 🎓
 
-- Configure the top-level `parserOptions` property like this:
+DevFit é um sistema de gerenciamento de atividades fitness focado em fornecer uma solução eficiente e organizada 
+para facilitar e otimizar as operações administrativas e operacionais. 
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Funcionalidades 🖥
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Cadastrar usuário:** Permitir a criação de novos registros, incluindo dados como nome, e-mail, senha, altura, peso, objetivo e nível fitness.
+- **Listar usuários:** Apresentar uma lista de todos os usuários cadastrados, com possibilidade de filtros e ordenações.
+- **Atualizar usuários:** Editar informações de um usuário existente, mantendo um histórico das alterações realizadas.
+- **Deletar usuários:** Remover registros do sistema de forma segura, garantindo que dados sensíveis sejam tratados adequadamente.
+- **Calcular IMC:** Determinar o Índice de Massa Corporal (IMC) do usuário com base na altura e peso cadastrados. Exibir a categoria correspondente (abaixo do peso, peso normal, sobrepeso, obesidade)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Tecnologias Utilizadas 🔧
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+**Frontend**
+React: Biblioteca do Javascript com foco na criação de interfaces de usuário em páginas web.
+Tailwind CSS: Framework de estilização baseado em classes utilitárias, que permite criar interfaces modernas e responsivas de forma rápida e eficiente.
+
+**Backend:**
+Spring Boot: Framework para criar APIs robustas e escaláveis em Java. </br>
+Spring Data JPA: Para integração com o banco de dados e simplificação de operações CRUD. </br>
+
+**Banco de Dados:** MySQL: Para persistência e confiabilidade dos dados.
