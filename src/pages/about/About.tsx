@@ -131,9 +131,9 @@ function Sobre() {
                 </div>
             </section>
             <br /><br />
-
+<div className="items-center ml-60 mr-60 text-justify">
             {/* Seção Sobre Nós */}
-            <section className="sobre">
+            <section className="sobre ">
                 <h2 className="sobredev">Sobre a DEVfit</h2>
                 <p className="">
                     A DEVFIT nasceu com a ideia de incentivar desenvolvedores a buscar um ambiente confortável e saudável, longe das longas horas sentadas em frente aos computadores. Sabemos que a vida de um desenvolvedor envolve desafios constantes, como o sedentarismo, dores nas costas e o cansaço mental, causados pelas longas jornadas de trabalho. Por isso, nosso objetivo é criar um espaço que promova o bem-estar físico e psicológico, equilibrando as demandas do desenvolvimento de software com o cuidado com a saúde. Acreditamos que um corpo saudável é essencial para manter a mente produtiva e criativa. Nossa missão é incentivar hábitos saudáveis, como a prática regular de exercícios físicos e o descanso mental, proporcionando uma rotina que valoriza tanto o aprendizado técnico quanto o autocuidado. Queremos ser um exemplo para outras empresas, mostrando que investir no bem-estar dos colaboradores é essencial para um ambiente de trabalho mais equilibrado e eficiente. Na DEVFIT, buscamos criar uma cultura de saúde integrada com a tecnologia, promovendo o bem-estar e o crescimento profissional de todos.
@@ -232,7 +232,7 @@ function Sobre() {
                                 <div className="text">
                                     <h3>{colaborador.nome} - {colaborador.cargo}</h3>
                                     
-                                    <p>{colaborador.bio}</p>
+                                    <p className="text-justify">{colaborador.bio}</p>
                                 </div>
 
                                 {/* Exibição do QR Code quando o colaborador for selecionado */}
@@ -247,6 +247,7 @@ function Sobre() {
                 </Slider>
             </section>
         </div>
+     </div>    
     );
 }
 
