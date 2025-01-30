@@ -102,6 +102,7 @@ section.missao{
   transition: 0.3s ease;
   margin: 16px;
   position: relative;
+  height: 650px;
 }
 
 .here-card:hover {
