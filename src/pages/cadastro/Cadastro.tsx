@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cadastrarUsuario } from "../../services/Service";
 import "./Cadastro.css";
 import { RotatingLines } from "react-loader-spinner";
@@ -15,8 +15,8 @@ function Cadastro() {
     nome: "",
     email: "",
     senha: "",
-    altura: 0,
-    peso: 0,
+    altura: "",
+    peso: "",
     objetivo: "",
     tipo: "",
     nivelFitness: "",
@@ -45,9 +45,11 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
+        navigate("/login");
         alert("Usuário cadastrado com sucesso!");
       } catch (error) {
         alert("Erro ao cadastrar o usuário!");
+        navigate("/home");
       }
     } else {
       alert(
@@ -134,14 +136,14 @@ function Cadastro() {
               </div>
               <div className="relative my-4">
                 <input
-                  type="name"
+                  type="number"
                   id="altura"
                   name="altura"
                   placeholder=" "
                   className="cadastroInput peer"
                   value={usuario.altura}
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleConfirmarSenha(e)
+                    atualizarEstado(e)
                   }
                 />
                 <label htmlFor="altura" className="cadastroLabel">
@@ -238,6 +240,12 @@ function Cadastro() {
                 )}
               </button>
             </div>
+            <p className="text-white">
+              Já possui uma conta ?{' '}
+            <Link to="/login" className="text-indigo-400 hover:text-indigo-500 cursor-pointer">
+              Faça o login
+            </Link>
+          </p>
           </form>
         </div>
       </div>
