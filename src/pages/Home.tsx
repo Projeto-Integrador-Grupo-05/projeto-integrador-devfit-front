@@ -1,7 +1,7 @@
 function Home(){
     return(
         
-        <section className="bg-[url(https://i.imgur.com/ADJkaVe.png)] 
+        <section className="bg-[url('Mountain.jpg')] 
         bg-center bg-no-repeat bg-cover h-auto">
         </section>
 
