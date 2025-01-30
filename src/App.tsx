@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/footer";
 import Navbar from "./components/Navbar/Navbar";
-import { Home } from "lucide-react";
+import Home from "./pages/Home";
 
 
 function App() {
