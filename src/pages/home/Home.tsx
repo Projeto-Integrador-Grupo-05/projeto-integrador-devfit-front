@@ -1,7 +1,6 @@
 import Features from "../../components/Features/Features";
 import Planos from "../../components/Planos/Plans";
 
-
 function Home(){
     return (
 
@@ -15,7 +14,6 @@ function Home(){
             <Features/>
         </section>
       );
-
       
 
 };

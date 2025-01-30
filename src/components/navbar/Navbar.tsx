@@ -17,7 +17,6 @@ function Navbar (){
 
   if (usuario.token !== "") {
     component = (
-    
         <header id="header" className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between">

@@ -8,6 +8,9 @@ import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
 import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer/Footer";
+import ListaTreino from "./components/treino/listatreino/ListaTreino";
+import FormTreino from "./components/treino/formtreino/FormTreino";
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
+              <Route path="/treino" element={<ListaTreino />} />
+            <Route path="/formtreino" element={<FormTreino />} />
             </Routes>
             <Footer/>
           </BrowserRouter>
