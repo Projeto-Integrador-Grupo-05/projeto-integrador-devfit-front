@@ -1,44 +1,56 @@
 import { Link } from "react-router-dom";
-import { FacebookLogo, InstagramLogo, TiktokLogo, LinkedinLogo } from "@phosphor-icons/react";
+import { FacebookLogo, InstagramLogo, TiktokLogo, LinkedinLogo} from "@phosphor-icons/react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 px-4yarn text-center p-4 mt-auto">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    <footer className="bg-black text-white py-6 mt-auto">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
         
+        {/* Navegação */}
         <div>
-            <nav>
-                <h3 className="font-bold uppercase">Navegue</h3>
-                    <Link to='/perfil' className="hover:underline">Área do cliente</Link>
-                    <Link to='/treinos' className="hover:underline">Grade de aulas</Link>
-                    <Link to='/sobre' className="hover:underline">Sobre Nós</Link>
-                    <Link to='/exercicios' className="hover:underline">Modalidades</Link>
-            </nav>
+          <h3 className="font-bold text-lg mb-2">NAVEGUE</h3>
+          <ul className="space-y-1">
+            <li><a href="#" className="hover:text-yellow-500">Área do Cliente</a></li>
+            <li><a href="#" className="hover:text-yellow-500">Grade de Aulas</a></li>
+            <li><a href="#" className="hover:text-yellow-500">Sobre Nós</a></li>
+            <li><a href="#" className="hover:text-yellow-500">Modalidades</a></li>
+          </ul>
         </div>
-        
-        
-        <div className="flex flex-col items-center">
-          <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo" className="w-36 mb-5" />
-          <h2 className="font-bold uppercase">Contato</h2>
-          <Link to =""><img src="https://i.imgur.com/FPir2GW.png" alt="Envelope"></img>grupo05.gen@gmail.com</Link>
-          <Link to =""><FacebookLogo size={30}/></Link>
 
-        </div>
-        
-        
-        <div className="text-center md:text-right">
-          <h3 className="font-bold uppercase">DevFit</h3>
-          <div className="flex justify-center md:justify-end mt-4 space-x-4">
+        {/* Logo */}
+        <div className="flex flex-col items-center">
+          <div className="bg-gray-100 p-3 rounded-lg">
+            <Link to="#"><img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit" className="w-14 h-14" /></Link>
           </div>
         </div>
+
+        
+        <div className="text-center md:text-right">
+          <h3 className="font-bold text-lg mb-2">CONTATOS</h3>
+          <p className="flex items-center justify-center md:justify-end gap-2">
+          </p>
+
+          <div className="flex justify-center md:justify-end gap-4 mt-2 text-xl">
+            <Link to="#" className="hover:text-yellow-500 w-5"><img src="https://i.imgur.com/4X29XBr.png" 
+                alt="Envelope"></img></Link>
+            <Link to="#" className="hover:text-yellow-500"><FacebookLogo/></Link>
+            <Link to="#" className="hover:text-yellow-500"><InstagramLogo /></Link>
+          </div>
+          <div className="flex justify-center md:justify-end gap-4 mt-2 text-xl">
+            <Link to="#" className="hover:text-yellow-500"><TiktokLogo /></Link>
+            <Link to="#" className="hover:text-yellow-500"><LinkedinLogo/></Link>
+          </div>
+        </div>
+
       </div>
-      
-      
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm">
-        <p>2025 © Todos os Direitos Reservados | Política de Privacidade</p>
+
+      {/* Rodapé */}
+      <div className="text-center text-sm border-t border-gray-700 mt-6 pt-4">
+        2025 © Todos os Direitos Reservados | <a href="#" className="hover:text-yellow-500">Política de Privacidade</a>
       </div>
     </footer>
   );
+
 };
 
 export default Footer;

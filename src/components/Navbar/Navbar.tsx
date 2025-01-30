@@ -29,14 +29,13 @@ function Navbar (){
                   <li><Link to="/exercicios" className="text-white hover:text-gray-400">EXERCÍCIOS</Link></li>
                   <li><Link to="/treinos" className="text-white hover:text-gray-400">TREINOS</Link></li>
                   <li><Link to="/perfil" className="text-white hover:text-gray-400">ÁREA DO ALUNO</Link></li>
-                  <li><Link to="/cadastro" className="text-white hover:text-gray-400">MATRICULE - SE</Link></li>
                 </ul>
               </nav>
     
               <div>
                 <Link to="/contato">
                   <button className="w-32 h-10 bg-orange-400 hover:bg-orange-600 text-white font-bold rounded transition-all duration-200">
-                    CONTATO
+                    MATRICULE-SE
                   </button>
                 </Link>
               </div>
@@ -45,6 +44,4 @@ function Navbar (){
         </header>
       );
     };
-
-
 export default Navbar
