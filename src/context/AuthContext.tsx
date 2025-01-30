@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { login } from "../services/Service";
 import { ToastAlerta } from "../utils/ToastAlerta";
 import UsuarioLogin from "../models/UsuarioLogin";
@@ -17,16 +17,22 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [usuario, setUsuario] = useState<UsuarioLogin>({
-    id: 0,
-    nome: "",
-    email: "",
-    senha: "",
-    altura: 0,
-    peso: 0,
-    objetivo: "",
-    nivelFitness: "",
-    token: "",
+  const [usuario, setUsuario] = useState<UsuarioLogin>(() => {
+    const usuarioSalvo = localStorage.getItem("usuario");
+    //const usuarioSalvo = sessionStorage
+    return usuarioSalvo
+      ? JSON.parse(usuarioSalvo)
+      : {
+          id: 0,
+          nome: "",
+          email: "",
+          senha: "",
+          altura: 0,
+          peso: 0,
+          objetivo: "",
+          nivelFitness: "",
+          token: "",
+        };
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +48,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
     setIsLoading(false);
   }
+  // guardando o token
+  useEffect(() => {
+    if (usuario.token) {
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+    }
+  });
 
   function handleLogout() {
     setUsuario({
@@ -55,6 +67,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       nivelFitness: "",
       token: "",
     });
+    localStorage.removeItem("usuario");
   }
 
   return (

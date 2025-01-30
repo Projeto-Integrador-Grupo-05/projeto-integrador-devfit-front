@@ -10,28 +10,29 @@ function FormTreino() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [exercicios, setExercicios] = useState<Exercicios[]>([]);
   const [treino, setTreino] = useState({
-    titulo: "",
+    nomeTreino: "",
+    frequenciaSemanal: "",
     descricao: "",
-    exercicios: [] as Exercicios[], 
+    exercicios: [] as Exercicios[],
   });
 
-    const { usuario, handleLogout } = useContext(AuthContext);
-    const token = usuario.token;
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
 
-    useEffect(() => {
-      if (token === "") {
-        alert("Você precisa estar logado");
-        navigate("/");
-      }
-    }, [token]);
-    
+  useEffect(() => {
+    if (token === "") {
+      alert("Você precisa estar logado");
+      navigate("/");
+    }
+  }, [token]);
+
   useEffect(() => {
     async function buscarExercicios() {
       try {
         await buscar("/exercicio", setExercicios, {
           headers: { Authorization: token },
         });
-      } catch (error : any) {
+      } catch (error: any) {
         if (error.toString().includes("403")) {
           handleLogout();
         }
@@ -46,11 +47,13 @@ function FormTreino() {
   }
 
   function selecionarExercicio(e: ChangeEvent<HTMLSelectElement>) {
-    const exercicioSelecionado = exercicios.find((ex) => ex.id === Number(e.target.value));
+    const exercicioSelecionado = exercicios.find(
+      (ex) => ex.id === Number(e.target.value)
+    );
     if (exercicioSelecionado) {
       setTreino({
         ...treino,
-        exercicios: [...treino.exercicios, exercicioSelecionado], 
+        exercicios: [...treino.exercicios, exercicioSelecionado],
       });
     }
   }
@@ -62,13 +65,13 @@ function FormTreino() {
     try {
       await cadastrar("/treino", treino, setTreino, {
         headers: {
-          Authorization: token
+          Authorization: token,
         },
       });
 
       alert("Treino cadastrado com sucesso!");
-      navigate("/"); 
-    } catch (error : any) {
+      navigate("/");
+    } catch (error: any) {
       if (error.toString().includes("403")) {
         handleLogout();
       }
@@ -85,16 +88,28 @@ function FormTreino() {
           <label htmlFor="titulo">Título do Treino</label>
           <input
             type="text"
-            placeholder="Título"
-            name="titulo"
+            placeholder="Nome Treino"
+            name="nomeTreino"
             required
             className="border-2 border-slate-700 rounded p-2"
-            value={treino.titulo}
+            value={treino.nomeTreino}
             onChange={atualizarEstado}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="descricao">Descrição do Treino</label>
+          <label htmlFor="number">frequencia Semanal</label>
+          <input
+            type="number"
+            placeholder="Nome Treino"
+            name="frequenciaSemanal"
+            required
+            className="border-2 border-slate-700 rounded p-2"
+            value={treino.frequenciaSemanal}
+            onChange={atualizarEstado}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="descricao">Descrição</label>
           <input
             type="text"
             placeholder="Descrição"
@@ -131,7 +146,6 @@ function FormTreino() {
               ))}
             </ul>
           )}
-
         </div>
         <div className="flex justify-between w-full">
           <button
