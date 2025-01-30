@@ -6,17 +6,17 @@ import Exercicios from "../../../models/Exercicios";
 import CardExercicios from "../cardexercicios/CardExercicios";
 import { buscar } from "../../../services/Service";
 
-function ListaTemas() {
+function ListaExercicios() {
   const navigate = useNavigate();
 
-  const [exercicios, setTemas] = useState<Exercicios[]>([]);
+  const [exercicios, setExercicios] = useState<Exercicios[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
   async function buscarExercicios() {
     try {
-      await buscar("/exercicios", setTemas, {
+      await buscar("/exercicio", setExercicios, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -37,6 +37,8 @@ function ListaTemas() {
     buscarExercicios();
   }, [exercicios.length]);
 
+  console.log(exercicios)
+
   return (
     <>
       {exercicios.length === 0 && (
@@ -52,8 +54,9 @@ function ListaTemas() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           
             {exercicios.map((exercicio) => (
-              <CardExercicios key={exercicio.id} tema={exercicio} />
+              <CardExercicios key={exercicio.id} exercicio={exercicio} />
             ))}
           </div>
         </div>
@@ -62,4 +65,4 @@ function ListaTemas() {
   );
 }
 
-export default ListaTemas;
+export default ListaExercicios;

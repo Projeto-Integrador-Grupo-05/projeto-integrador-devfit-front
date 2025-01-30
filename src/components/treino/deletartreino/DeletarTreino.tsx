@@ -53,12 +53,12 @@ function DeletarTreino() {
         },
       });
 
-      alert("Treino apagada com sucesso");
+      alert("Treino apagado com sucesso");
     } catch (error: any) {
       if (error.toString().includes("403")) {
         handleLogout();
       } else {
-        alert("Erro ao deletar a treino.");
+        alert("Erro ao deletar o treino.");
       }
     }
 
@@ -71,31 +71,25 @@ function DeletarTreino() {
   }
 
   return (
-    <div className="container w-1/3 mx-auto">
-      <h1 className="text-4xl text-center my-4">Deletar Treino</h1>
-
-      <p className="text-center font-semibold mb-4">
-        Você tem certeza de que deseja apagar o treino a seguir?
-      </p>
-
-      <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-        <header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
-          Treino
-        </header>
-        <div className="p-4">
-          <p className="text-xl h-full">{treino.nomeTreino}</p>
-          <p>{treino.descricao}</p>
+    <div className="flex justify-center items-center h-screen">
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-96 text-center">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Deletar Treino</h1>
+        <p className="text-gray-700 mb-4">
+          Tem certeza de que deseja apagar o treino abaixo?
+        </p>
+        <div className="bg-gray-100 p-4 rounded-lg mb-4">
+          <h2 className="text-lg font-semibold text-gray-800">{treino.nomeTreino}</h2>
+          <p className="text-gray-600">{treino.descricao}</p>
         </div>
-        <div className="flex">
+        <div className="flex space-x-4">
           <button
-            className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
+            className="w-1/2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 rounded-lg transition"
             onClick={retornar}
           >
             Não
           </button>
           <button
-            className="w-full text-slate-100 bg-indigo-400 
-                        hover:bg-indigo-600 flex items-center justify-center"
+            className="w-1/2 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition flex justify-center items-center"
             onClick={deletarTreino}
           >
             {isLoading ? (
@@ -107,7 +101,7 @@ function DeletarTreino() {
                 visible={true}
               />
             ) : (
-              <span>Sim</span>
+              "Sim"
             )}
           </button>
         </div>

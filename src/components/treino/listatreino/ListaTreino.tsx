@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CardTreino from "../cardtreino/CardTreino";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../../context/AuthContext";
@@ -41,6 +41,14 @@ function ListaTreino() {
 
   return (
     <>
+      <div className="flex justify-center my-8">
+        <Link
+          to="/formtreino"
+          className="px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+        >
+          Criar Novo Treino
+        </Link>
+      </div>
       {treinos.length === 0 && (
         <DNA
           visible={true}

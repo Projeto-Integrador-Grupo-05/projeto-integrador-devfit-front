@@ -1,51 +1,145 @@
 import { ReactNode, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Navbar() {
   const navigate = useNavigate();
-
   const { usuario, handleLogout } = useContext(AuthContext);
+  const location = useLocation(); 
+
+  
+  if (location.pathname === "/login" || location.pathname === "/cadastro") {
+    return null; 
+  }
 
   function logout() {
     handleLogout();
     ToastAlerta("O Usuário foi desconectado com sucesso!", "info");
-    navigate("/");
+    navigate("/home");
   }
 
   let component: ReactNode;
 
+ 
   if (usuario.token !== "") {
     component = (
-      <div
-        className="w-full bg-gradient-to-r from-purple-400 from-10% via-purple-600 via-30% to-purple-800 to-60% text-white
-                flex justify-center py-4"
-      >
-        <div className="container flex justify-between text-lg">
-          <Link to="/home" className="text-2xl font-bold">
-            Blog Pessoal
-          </Link>
+      <header className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <Link to="/home" className="text-white text-2xl">
+              <img
+                src="https://i.imgur.com/RhVXHKF.png"
+                alt="Logo DevFit"
+                className="w-14"
+              />
+            </Link>
 
-          <div className="flex gap-4">
-            <Link to="/postagens" className="hover:underline">
-              Postagens
-            </Link>
-            <Link to="/temas" className="hover:underline">
-              Temas
-            </Link>
-            <Link to="/cadastrartema" className="hover:underline">
-              Cadastrar tema
-            </Link>
-            <Link to="/perfil" className="hover:underline">
-              Perfil
-            </Link>
-            <Link to="" onClick={logout} className="hover:underline">
-              Sair
-            </Link>
+            <nav>
+              <ul className="flex space-x-12">
+                <li>
+                  <Link
+                    to="/exercicios"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    EXERCÍCIOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/treino"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    TREINOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/perfil"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    ÁREA DO ALUNO
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    SOBRE NÒS
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            <button
+              onClick={logout}
+              className="w-32 h-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded transition-all duration-200"
+            >
+              SAIR
+            </button>
           </div>
         </div>
-      </div>
+      </header>
+    );
+  } else {
+    component = (
+      <header className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <Link to="/home" className="text-white text-2xl">
+              <img
+                src="https://i.imgur.com/RhVXHKF.png"
+                alt="Logo DevFit"
+                className="w-14"
+              />
+            </Link>
+
+            <nav>
+              <ul className="flex space-x-12">
+                <li>
+                  <Link
+                    to="/listaexercicios"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    EXERCÍCIOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/treino"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    TREINOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    SOBRE
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="flex gap-4">
+              <Link to="/login">
+                <button className="w-32 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded transition-all duration-200">
+                  LOGIN
+                </button>
+              </Link>
+
+              <Link to="/cadastro">
+                <button className="w-32 h-10 bg-orange-400 hover:bg-orange-600 text-white font-bold rounded transition-all duration-200">
+                  MATRICULE-SE
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
     );
   }
 
