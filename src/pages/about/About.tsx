@@ -44,49 +44,49 @@ function Sobre() {
     // Dados dos colaboradores
     const colaboradores: Colaborador[] = [
         { 
-            nome: "Andre", 
+            nome: "Andre Lins", 
             foto: "/src/image/Andre.png", 
             cargo: "Developer", 
             bio: "Apaixonado por JavaScript, Andre é um desenvolvedor experiente na DEVFIT desde 2018. Ele adora criar soluções inovadoras e melhorar a experiência dos usuários. Seu foco é sempre em código limpo e eficiente, buscando constantemente o aprendizado e a evolução como profissional.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Emerson", 
+            nome: "Emerson Marques", 
             foto: "/src/image/Emerson.png", 
             cargo: "Developer", 
             bio: "Emerson é um desenvolvedor dedicado com um olhar atento às melhores práticas de programação. Com uma sólida experiência em JavaScript, ele contribui ativamente para o crescimento da DEVFIT, sempre buscando soluções que unam funcionalidade e performance para o usuário final.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Naiara", 
+            nome: "Naiara Costa", 
             foto: "/src/image/Naiara.png", 
             cargo: "Developer", 
             bio: "Com uma paixão por programação, Naiara traz sua expertise em JavaScript para a DEVFIT desde 2018. Ela está sempre em busca de novos desafios e adora trabalhar em equipe para entregar soluções criativas que atendam às necessidades dos usuários de forma eficaz e inteligente.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Nayara", 
+            nome: "Nayara Paula", 
             foto: "/src/image/Nayara.png", 
             cargo: "Developer", 
             bio: "Nayara é uma desenvolvedora inovadora que adora resolver problemas complexos. Ela se dedica ao desenvolvimento de soluções tecnológicas que impactam positivamente os usuários, sempre se atualizando nas últimas tendências de programação e aprimorando suas habilidades na DEVFIT.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Rafael", 
+            nome: "Rafael Aparecido", 
             foto: "/src/image/Rafael.png", 
             cargo: "Developer", 
             bio: "Rafael é um desenvolvedor comprometido com a entrega de soluções robustas e escaláveis. Com foco em performance e eficiência, ele utiliza suas habilidades em programação para otimizar processos e criar sistemas que oferecem uma excelente experiência para os usuários da DEVFIT.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Thayna", 
+            nome: "Thayná Simões", 
             foto: "/src/image/Thayna.png", 
             cargo: "Product Owner", 
             bio: "Thayna é a responsável pela visão de produto da DEVFIT. Ela trabalha para garantir que os objetivos de negócio sejam alinhados com as necessidades dos usuários. Sua habilidade em coordenar equipes e priorizar tarefas é fundamental para o sucesso dos projetos da empresa.", 
             qrcodeData: "https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit-front" 
         },
         { 
-            nome: "Vinicius", 
+            nome: "Vinicius Aquino", 
             foto: "/src/image/Vinicius.png", 
             cargo: "Tester", 
             bio: "Vinicius é o guardião da qualidade na DEVFIT. Como tester, ele dedica seu tempo a garantir que todos os sistemas e funcionalidades atendam aos mais altos padrões de qualidade. Sua atenção aos detalhes e habilidade para identificar problemas fazem dele um membro essencial da equipe.", 
@@ -114,7 +114,7 @@ function Sobre() {
 
             {/* Seção de Missão */}
             <section className="missao">
-                <h1 className="titulo1">
+                <h1 className="titulo1 ">
                     Nossa missão é melhorar a saúde de nossos colaboradores
                 </h1>
             </section>
@@ -135,16 +135,17 @@ function Sobre() {
             {/* Seção Sobre Nós */}
             <section className="sobre">
                 <h2 className="sobredev">Sobre a DEVfit</h2>
-                <p className="text-lg text-gray-700 mx-auto max-w-2xl">
+                <p className="">
                     A DEVFIT nasceu com a ideia de incentivar desenvolvedores a buscar um ambiente confortável e saudável, longe das longas horas sentadas em frente aos computadores. Sabemos que a vida de um desenvolvedor envolve desafios constantes, como o sedentarismo, dores nas costas e o cansaço mental, causados pelas longas jornadas de trabalho. Por isso, nosso objetivo é criar um espaço que promova o bem-estar físico e psicológico, equilibrando as demandas do desenvolvimento de software com o cuidado com a saúde. Acreditamos que um corpo saudável é essencial para manter a mente produtiva e criativa. Nossa missão é incentivar hábitos saudáveis, como a prática regular de exercícios físicos e o descanso mental, proporcionando uma rotina que valoriza tanto o aprendizado técnico quanto o autocuidado. Queremos ser um exemplo para outras empresas, mostrando que investir no bem-estar dos colaboradores é essencial para um ambiente de trabalho mais equilibrado e eficiente. Na DEVFIT, buscamos criar uma cultura de saúde integrada com a tecnologia, promovendo o bem-estar e o crescimento profissional de todos.
                 </p>
+                <br />
                 <hr />
             </section>
 
             {/* Seção de Perguntas Frequentes */}
             <section className="faq py-12">
-                <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center">Perguntas Frequentes</h2>
-
+                <h2 className="w-full text-left text-xl font-semibold text-indigo-600 focus:outline-none">Perguntas Frequentes</h2>
+<br />
                 <div className="space-y-4">
                     {/* Pergunta 1 */}
                     <div className="border-b border-gray-300 pb-4">
@@ -160,7 +161,7 @@ function Sobre() {
                             </div>
                         )}
                     </div>
-                    <br />
+                    
                     {/* Pergunta 2 */}
                     <div className="border-b border-gray-300 pb-4">
                         <button
@@ -175,7 +176,7 @@ function Sobre() {
                             </div>
                         )}
                     </div>
-                    <br />
+                    
                     {/* Pergunta 3 */}
                     <div className="border-b border-gray-300 pb-4">
                         <button
@@ -194,9 +195,10 @@ function Sobre() {
             </section>
 
             {/* Seção dos Colaboradores */}
-            <section className="py-12 text-left">
-                <h2 className="titulo2">Nossos Colaboradores</h2>
-                <p className="mb-6">
+            <section className=" text-left">
+                <h1 className="w-full text-left text-xl font-semibold focus:outline-none">Nossos Colaboradores</h1>
+            <br />
+                <p className="">
                     Somos uma equipe de desenvolvedores apaixonados por criar soluções que promovem saúde e bem-estar. Acreditamos que um ambiente de trabalho saudável é fundamental para aumentar a produtividade e a satisfação, contribuindo para o equilíbrio físico e mental.
                 </p>
 
@@ -226,9 +228,10 @@ function Sobre() {
                                         style={{ borderRadius: "20%" }}
                                     />
                                 </div>
+                                <br />
                                 <div className="text">
-                                    <h3>{colaborador.nome}</h3>
-                                    <h4>{colaborador.cargo}</h4>
+                                    <h3>{colaborador.nome} - {colaborador.cargo}</h3>
+                                    
                                     <p>{colaborador.bio}</p>
                                 </div>
 

@@ -32,8 +32,8 @@ function Login() {
 
   return (
     <>
-      <div className="text-white h-[100vh] flex items-center justify-center bg-cover">
-        <img className="fundoLogin"></img>
+      <div className="text-white h-[100vh] flex items-center justify-center bg-cover fundoLogin">
+        <img className=""></img>
         <div className=" backdrop-invert backdrop-opacity-10 bg-slate-900 border border-slate-400 rounded-md p-10 shadow-xl backdrop-filter backdrop-blur-lg bg-opacity-60 relative">
           <h1 className="text-4xl font-bold text-center mb-6">Login</h1>
           <form onSubmit={login}>

@@ -19,7 +19,7 @@ const Planos = () => {
               <p className="text-gray-700">12 meses de fidelidade</p>
             </div>
             <div className="mt-6">
-              <button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button>
+            <Link to="/login"><button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button></Link>
             </div>
             <ul className="mt-6 text-gray-600">
               <li>• Acesso ilimitado a +1.700 academias</li>
@@ -45,7 +45,7 @@ const Planos = () => {
               <p className="text-gray-700">Sem fidelidade</p>
             </div>
             <div className="mt-6">
-              <button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button>
+            <Link to="/login"><button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button></Link>
             </div>
             <ul className="mt-6 text-gray-600">
               <li>• Acesso ilimitado a +1.700 academias</li>
@@ -71,7 +71,7 @@ const Planos = () => {
               <p className="text-gray-700">12 meses de fidelidade</p>
             </div>
             <div className="mt-6">
-              <Link to="/"><button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button></Link>
+              <Link to="/login"><button className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-600">Contratar agora</button></Link>
             </div>
             <ul className="mt-6 text-gray-600">
               <li>• Acesso ilimitado a +1.700 academias</li>
