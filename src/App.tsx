@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer/Footer";
 import ListaTreino from "./components/treino/listatreino/ListaTreino";
 import FormTreino from "./components/treino/formtreino/FormTreino";
+import ListaExercicioss from "./components/exercicios/listaexercicios/ListaExercicios";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
-              <Route path="/treino" element={<ListaTreino />} />
+              <Route path="/treino" element={<ListaExercicioss />} />
             <Route path="/formtreino" element={<FormTreino />} />
             </Routes>
             <Footer/>
