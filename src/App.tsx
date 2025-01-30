@@ -11,6 +11,7 @@ import Footer from "./components/footer/Footer";
 import ListaTreino from "./components/treino/listatreino/ListaTreino";
 import FormTreino from "./components/treino/formtreino/FormTreino";
 
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -27,9 +28,10 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/treino" element={<ListaTreino />} />
-            <Route path="/formtreino" element={<FormTreino />} />
+              <Route path="/formtreino" element={<FormTreino />} />
+              <Route path="/about" element={<About />} />
             </Routes>
-            <Footer/>
+            <Footer />
           </BrowserRouter>
         </AuthProvider>
       </div>
