@@ -11,19 +11,21 @@ import Cadastro from "./pages/cadastro/Cadastro";
 function App() {
   return (
     <>
-      <AuthProvider>
-        <ToastContainer />
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/perfil" element={<Perfil />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+      <div className="text-white h-[100vh] flex items-center justify-center bg-cover">
+        <AuthProvider>
+          <ToastContainer />
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/perfil" element={<Perfil />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </div>
     </>
   );
 }

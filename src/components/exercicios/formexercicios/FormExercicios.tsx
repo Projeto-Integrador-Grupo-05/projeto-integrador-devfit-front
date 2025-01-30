@@ -2,13 +2,13 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
-import Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import Exercicios from "../../../models/Exercicios";
 
-function FormTema() {
+function FormExercicios() {
   const navigate = useNavigate();
 
-  const [tema, setTema] = useState<Tema>({} as Tema);
+  const [exercicios, setExercicios] = useState<Exercicios>({} as Exercicios);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { usuario, handleLogout } = useContext(AuthContext);
@@ -18,7 +18,7 @@ function FormTema() {
 
   async function buscarPorId(id: string) {
     try {
-      await buscar(`/temas/${id}`, setTema, {
+      await buscar(`/exercicios/${id}`, setExercicios, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -42,44 +42,44 @@ function FormTema() {
   }, [id]);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-    setTema({
-      ...tema,
+    setExercicios({
+      ...exercicios,
       [e.target.name]: e.target.value,
     });
   }
 
   function retornar() {
-    navigate("/temas");
+    navigate("/exercicios");
   }
 
-  async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
+  async function gerarNovoExercicios(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
 
     if (id !== undefined) {
       try {
-        await atualizar(`/temas`, tema, setTema, {
+        await atualizar(`/exercicios`, exercicios, setExercicios, {
           headers: { Authorization: token },
         });
-        alert("O Tema foi atualizado com sucesso!");
+        alert("O Exercicios foi atualizado com sucesso!");
       } catch (error: any) {
         if (error.toString().includes("403")) {
           handleLogout();
         } else {
-          alert("Erro ao atualizar o tema.");
+          alert("Erro ao atualizar o exercicios.");
         }
       }
     } else {
       try {
-        await cadastrar(`/temas`, tema, setTema, {
+        await cadastrar(`/exercicios`, exercicios, setExercicios, {
           headers: { Authorization: token },
         });
-        alert("O Tema foi cadastrado com sucesso!");
+        alert("O Exercicios foi cadastrado com sucesso!");
       } catch (error: any) {
         if (error.toString().includes("403")) {
           handleLogout();
         } else {
-          alert("Erro ao cadastrar o tema.");
+          alert("Erro ao cadastrar o exercicios.");
         }
       }
     }
@@ -91,18 +91,21 @@ function FormTema() {
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">
-        {id === undefined ? "Cadastrar Tema" : "Editar Tema"}
+        {id === undefined ? "Cadastrar Exercicios" : "Editar Exercicios"}
       </h1>
 
-      <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
+      <form
+        className="w-1/2 flex flex-col gap-4"
+        onSubmit={gerarNovoExercicios}
+      >
         <div className="flex flex-col gap-2">
-          <label htmlFor="descricao">Descrição do Tema</label>
+          <label htmlFor="descricao">Descrição do Exercicios</label>
           <input
             type="text"
-            placeholder="Descreva aqui seu tema"
+            placeholder="Descreva aqui seu exercicios"
             name="descricao"
             className="border-2 border-slate-700 rounded p-2"
-            value={tema.descricao}
+            value={exercicios.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
@@ -128,4 +131,4 @@ function FormTema() {
   );
 }
 
-export default FormTema;
+export default FormExercicios;
