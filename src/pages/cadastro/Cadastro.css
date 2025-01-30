@@ -1,0 +1,23 @@
+.fundoCadastro {
+  background-image: url("https://images4.alphacoders.com/134/thumb-1920-1345029.png");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cadastroInput {
+  @apply block w-56 py-2.5 px-0 text-sm
+   text-white bg-transparent border-0 
+   border-b-2 border-gray-500 appearance-none 
+   focus:outline-none focus:ring-0 focus:border-gray-100;
+}
+
+.cadastroLabel {
+  @apply absolute text-sm text-gray-200 duration-300 transform 
+  -translate-y-4 scale-75 top-3 left-2 peer-placeholder-shown:translate-y-2 
+  peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-4
+ peer-focus:text-gray-50;
+}
