@@ -28,18 +28,46 @@ function Navbar() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <Link to="/home" className="text-white text-2xl">
-              <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit" className="w-14"/>
+              <img
+                src="https://i.imgur.com/RhVXHKF.png"
+                alt="Logo DevFit"
+                className="w-14"
+              />
             </Link>
 
             <nav>
               <ul className="flex space-x-12">
-                <li><Link to="/listaexercicios" className="text-white hover:text-yellow-500">EXERCÍCIOS</Link></li>
-                <li><Link to="/treino" className="text-white hover:text-yellow-500">TREINOS</Link></li>
-                <li><Link to="/perfil" className="text-white hover:text-yellow-500">ÁREA DO ALUNO</Link></li>
+                <li>
+                  <Link
+                    to="/exercicios"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    EXERCÍCIOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/treino"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    TREINOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/perfil"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    ÁREA DO ALUNO
+                  </Link>
+                </li>
               </ul>
             </nav>
 
-            <button onClick={logout} className="w-32 h-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded transition-all duration-200">
+            <button
+              onClick={logout}
+              className="w-32 h-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded transition-all duration-200"
+            >
               SAIR
             </button>
           </div>
@@ -52,14 +80,39 @@ function Navbar() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <Link to="/home" className="text-white text-2xl">
-              <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit" className="w-14"/>
+              <img
+                src="https://i.imgur.com/RhVXHKF.png"
+                alt="Logo DevFit"
+                className="w-14"
+              />
             </Link>
 
             <nav>
               <ul className="flex space-x-12">
-                <li><Link to="/listaexercicios" className="text-white hover:text-yellow-500">EXERCÍCIOS</Link></li>
-                <li><Link to="/treino" className="text-white hover:text-yellow-500">TREINOS</Link></li>
-                <li><Link to="/about" className="text-white hover:text-yellow-500">SOBRE</Link></li>
+                <li>
+                  <Link
+                    to="/listaexercicios"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    EXERCÍCIOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/treino"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    TREINOS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    SOBRE
+                  </Link>
+                </li>
               </ul>
             </nav>
 
