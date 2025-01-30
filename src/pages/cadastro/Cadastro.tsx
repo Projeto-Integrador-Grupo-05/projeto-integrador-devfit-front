@@ -13,7 +13,6 @@ function Cadastro() {
   const [confirmaSenha, setConfirmaSenha] = useState<string>("");
 
   const [usuario, setUsuario] = useState({
-    //  id: 0,
     nome: "",
     email: "",
     senha: "",
@@ -23,12 +22,6 @@ function Cadastro() {
     tipo: "fwfqfqf",
     nivelFitness: "fqwqfqwfwq",
   });
-
-  // useEffect(() => {
-  //   if (usuario.id !== 0) {
-  //     retornar();
-  //   }
-  // }, [usuario]);
 
   function retornar() {
     navigate("/login");
