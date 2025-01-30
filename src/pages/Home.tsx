@@ -1,3 +1,5 @@
+import Features from "../components/Features/Features";
+import Planos from "../components/Planos/Plans";
 
 
 function Home(){
@@ -9,6 +11,9 @@ function Home(){
             <h1 className="text-5xl font-bold mb-4">Bem-vindo à DevFit</h1>
             <p className="text-xl mb-8">Mais tempo para você</p>
           </div>
+
+            <Planos/>
+            <Features/>
         </section>
       );
 
