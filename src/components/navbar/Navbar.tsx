@@ -61,6 +61,14 @@ function Navbar() {
                     ÁREA DO ALUNO
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    SOBRE NÒS
+                  </Link>
+                </li>
               </ul>
             </nav>
 

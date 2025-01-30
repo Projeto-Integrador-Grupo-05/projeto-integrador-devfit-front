@@ -1,6 +1,5 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import "./Cadastro.css";
 import { RotatingLines } from "react-loader-spinner";
@@ -16,11 +15,11 @@ function Cadastro() {
     nome: "",
     email: "",
     senha: "",
-    altura: 54,
-    peso: 34,
-    objetivo: "bagaefeaf",
-    tipo: "fwfqfqf",
-    nivelFitness: "fqwqfqwfwq",
+    altura: 0,
+    peso: 0,
+    objetivo: "",
+    tipo: "",
+    nivelFitness: "",
   });
 
   function retornar() {
