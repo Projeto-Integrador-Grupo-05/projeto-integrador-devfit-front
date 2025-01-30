@@ -172,3 +172,18 @@ section.missao{
 p.mb-6 {
     text-align: justify !important;
   }
+
+  /*--------------------*/
+  /* Títulos de Seção de "Sobre a DEVfit" e "Nossos Colaboradores" */
+.sobredev, .text-left h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4c4c4c; /* Mesma cor que o título da FAQ */
+  }
+  
+  /* Estilo de texto das descrições em "Sobre a DEVfit" e "Nossos Colaboradores" */
+  .sobredev p, .text-left p {
+    font-size: 1.2rem;
+    color: #4c4c4c; /* Mesma cor que as respostas da FAQ */
+  }
+  

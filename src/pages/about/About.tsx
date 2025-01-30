@@ -230,7 +230,7 @@ function Sobre() {
                                 </div>
                                 <br />
                                 <div className="text">
-                                    <h3>{colaborador.nome}-{colaborador.cargo}</h3>
+                                    <h3>{colaborador.nome} - {colaborador.cargo}</h3>
                                     
                                     <p>{colaborador.bio}</p>
                                 </div>
