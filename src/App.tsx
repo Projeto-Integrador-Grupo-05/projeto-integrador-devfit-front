@@ -13,21 +13,23 @@ import FormTreino from "./components/treino/formtreino/FormTreino";
 function App() {
   return (
     <>
-      <AuthProvider>
-        <ToastContainer />
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/treino" element={<ListaTreino />} />
+      <div className="">
+        <AuthProvider>
+          <ToastContainer />
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/perfil" element={<Perfil />} />
+              <Route path="/treino" element={<ListaTreino />} />
             <Route path="/formtreino" element={<FormTreino />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </div>
     </>
   );
 }

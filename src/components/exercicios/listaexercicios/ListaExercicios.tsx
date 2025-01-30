@@ -2,21 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
-import Tema from "../../../models/Tema";
-import CardTemas from "../cardtemas/CardTemas";
+import Exercicios from "../../../models/Exercicios";
+import CardExercicios from "../cardexercicios/CardExercicios";
 import { buscar } from "../../../services/Service";
 
-function ListaTemas() {
+function ListaExercicioss() {
   const navigate = useNavigate();
 
-  const [temas, setTemas] = useState<Tema[]>([]);
+  const [exercicios, setExercicioss] = useState<Exercicios[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
-  async function buscarTemas() {
+  async function buscarExercicios() {
     try {
-      await buscar("/temas", setTemas, {
+      await buscar("/exercicios", setExercicioss, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -34,12 +34,12 @@ function ListaTemas() {
   }, [token]);
 
   useEffect(() => {
-    buscarTemas();
-  }, [temas.length]);
+    buscarExercicios();
+  }, [exercicios.length]);
 
   return (
     <>
-      {temas.length === 0 && (
+      {exercicios.length === 0 && (
         <DNA
           visible={true}
           height="200"
@@ -52,8 +52,8 @@ function ListaTemas() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {temas.map((tema) => (
-              <CardTemas key={tema.id} tema={tema} />
+            {exercicios.map((exercicio) => (
+              <CardExercicios key={exercicio.id} exercicios={exercicio} />
             ))}
           </div>
         </div>
@@ -62,4 +62,4 @@ function ListaTemas() {
   );
 }
 
-export default ListaTemas;
+export default ListaExercicioss;
