@@ -1,11 +1,17 @@
 import { ReactNode, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Navbar() {
   const navigate = useNavigate();
   const { usuario, handleLogout } = useContext(AuthContext);
+  const location = useLocation(); // Pega a localização (rota) atual
+
+  // Verifica se a rota atual é '/login' ou '/cadastro'
+  if (location.pathname === "/login" || location.pathname === "/cadastro") {
+    return null; // Não renderiza o Navbar nessas rotas
+  }
 
   function logout() {
     handleLogout();
@@ -15,6 +21,7 @@ function Navbar() {
 
   let component: ReactNode;
 
+  // Se o usuário estiver logado (com token), renderiza o navbar de logged-in
   if (usuario.token !== "") {
     component = (
       <header className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
@@ -56,7 +63,6 @@ function Navbar() {
               </ul>
             </nav>
 
-      
             <div className="flex gap-4">
               <Link to="/login">
                 <button className="w-32 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded transition-all duration-200">
