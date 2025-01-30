@@ -6,7 +6,7 @@
 
 - [DER](https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit/blob/main/docs/DER.mdj)
 
-- [Escopo do Projeto](https://github.com/Projeto-Integrador-Grupo-05/projeto-integrador-devfit/blob/main/docs/Escopo.docx)
+- [Escopo do Projeto](docs/Escopo-PI-devfit.docx)
 
 ### Descrição 🎓
 
