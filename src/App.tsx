@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
-
 import Home from "./pages/home/Home";
 import Perfil from "./pages/perfil/Perfil";
 import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
+import { ToastContainer } from "react-toastify";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
             </Routes>
+            <Footer/>
           </BrowserRouter>
         </AuthProvider>
       </div>

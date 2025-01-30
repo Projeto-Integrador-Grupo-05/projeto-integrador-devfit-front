@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FacebookLogo, InstagramLogo, TiktokLogo, LinkedinLogo} from "@phosphor-icons/react";
+import { ToastAlerta } from "../../utils/ToastAlerta";
+import { ReactNode, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Footer = () => {
-  return (
+
+  const navigate = useNavigate();
+    const { usuario, handleLogout } = useContext(AuthContext);
+
+  function logout() {
+    handleLogout();
+    ToastAlerta("O Usuário foi desconectado com sucesso!", "info");
+    navigate("/");
+  }
+
+  let component: ReactNode;
+
+  if (usuario.token !== "") {
+    component = (
+
     <footer className="bg-black text-white py-6 mt-auto">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
         
@@ -10,10 +27,10 @@ const Footer = () => {
         <div>
           <h3 className="font-bold text-lg mb-2">NAVEGUE</h3>
           <ul className="space-y-1">
-            <li><a href="#" className="hover:text-yellow-500">Área do Cliente</a></li>
-            <li><a href="#" className="hover:text-yellow-500">Grade de Aulas</a></li>
+            <li><a href="perfil" className="hover:text-yellow-500">Área do Cliente</a></li>
+            <li><a href="" className="hover:text-yellow-500">Grade de Exercicios</a></li>
             <li><a href="#" className="hover:text-yellow-500">Sobre Nós</a></li>
-            <li><a href="#" className="hover:text-yellow-500">Modalidades</a></li>
+            <li><a href="#" className="hover:text-yellow-500">Treinos</a></li>
           </ul>
         </div>
 
@@ -51,6 +68,7 @@ const Footer = () => {
     </footer>
   );
 
-};
+  }return<>{component}</>
+}
 
 export default Footer;
