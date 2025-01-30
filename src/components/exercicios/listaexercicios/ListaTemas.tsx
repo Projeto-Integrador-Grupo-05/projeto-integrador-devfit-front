@@ -2,21 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
-import Exercicios from "../../../models/Exercicios";
-import CardExercicios from "../cardexercicios/CardExercicios";
+import Tema from "../../../models/Tema";
+import CardTemas from "../cardtemas/CardTemas";
 import { buscar } from "../../../services/Service";
 
-function ListaExercicios() {
+function ListaTemas() {
   const navigate = useNavigate();
 
-  const [exercicios, setExercicios] = useState<Exercicios[]>([]);
+  const [temas, setTemas] = useState<Tema[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
-  async function buscarExercicios() {
+  async function buscarTemas() {
     try {
-      await buscar("/exercicio", setExercicios, {
+      await buscar("/temas", setTemas, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -34,14 +34,12 @@ function ListaExercicios() {
   }, [token]);
 
   useEffect(() => {
-    buscarExercicios();
-  }, [exercicios.length]);
-
-  console.log(exercicios)
+    buscarTemas();
+  }, [temas.length]);
 
   return (
     <>
-      {exercicios.length === 0 && (
+      {temas.length === 0 && (
         <DNA
           visible={true}
           height="200"
@@ -54,9 +52,8 @@ function ListaExercicios() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-           
-            {exercicios.map((exercicio) => (
-              <CardExercicios key={exercicio.id} exercicio={exercicio} />
+            {temas.map((tema) => (
+              <CardTemas key={tema.id} tema={tema} />
             ))}
           </div>
         </div>
@@ -65,4 +62,4 @@ function ListaExercicios() {
   );
 }
 
-export default ListaExercicios;
+export default ListaTemas;

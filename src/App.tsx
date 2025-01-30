@@ -12,6 +12,7 @@ import ListaTreino from "./components/treino/listatreino/ListaTreino";
 import FormTreino from "./components/treino/formtreino/FormTreino";
 
 import About from "./pages/about/About";
+import ListaExercicios from "./components/exercicios/listaexercicios/ListaExercicios";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/treino" element={<ListaTreino />} />
+              <Route path="/exercicios" element={<ListaExercicios />} />
               <Route path="/formtreino" element={<FormTreino />} />
               <Route path="/about" element={<About />} />
             </Routes>
