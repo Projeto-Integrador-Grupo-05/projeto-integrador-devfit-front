@@ -6,17 +6,17 @@ import Exercicios from "../../../models/Exercicios";
 import CardExercicios from "../cardexercicios/CardExercicios";
 import { buscar } from "../../../services/Service";
 
-function ListaExercicioss() {
+function ListaTemas() {
   const navigate = useNavigate();
 
-  const [exercicios, setExercicioss] = useState<Exercicios[]>([]);
+  const [exercicios, setTemas] = useState<Exercicios[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
   async function buscarExercicios() {
     try {
-      await buscar("/exercicios", setExercicioss, {
+      await buscar("/exercicios", setTemas, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -53,7 +53,7 @@ function ListaExercicioss() {
         <div className="container flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {exercicios.map((exercicio) => (
-              <CardExercicios key={exercicio.id} exercicios={exercicio} />
+              <CardExercicios key={exercicio.id} tema={exercicio} />
             ))}
           </div>
         </div>
@@ -62,4 +62,4 @@ function ListaExercicioss() {
   );
 }
 
-export default ListaExercicioss;
+export default ListaTemas;
