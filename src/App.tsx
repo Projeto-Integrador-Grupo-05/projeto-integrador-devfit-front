@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/footer";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
+import Features from "./components/Features/Features";
+import Planos from "./components/Planos/Plans";
 
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <Home/>
+            <Planos/>
+            <Features/>
             <Footer/>
           </div>
         </div>

@@ -1,23 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 
 function Navbar (){
 
-    const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 500);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
     return (
-        <header id="header" className="w-full fixed top-0 left-0 transition-all duration-500 bg-sky-500 py-4">
+        <header id="header" className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between">
               <Link to="/#" className="text-white text-2xl">
@@ -25,10 +11,10 @@ function Navbar (){
               </Link>
     
               <nav>
-                <ul className="flex space-x-10">
-                  <li><Link to="/#" className="text-white hover:text-gray-400">EXERCÍCIOS</Link></li>
-                  <li><Link to="/#" className="text-white hover:text-gray-400">TREINOS</Link></li>
-                  <li><Link to="/#" className="text-white hover:text-gray-400">ÁREA DO ALUNO</Link></li>
+                <ul className="flex space-x-12">
+                  <li><Link to="/#" className="text-white hover:text-yellow-500 ">EXERCÍCIOS</Link></li>
+                  <li><Link to="/#" className="text-white hover:text-yellow-500">TREINOS</Link></li>
+                  <li><Link to="/#" className="text-white hover:text-yellow-500">ÁREA DO ALUNO</Link></li>
                 </ul>
               </nav>
     
