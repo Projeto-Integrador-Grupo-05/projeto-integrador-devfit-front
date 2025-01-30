@@ -141,6 +141,7 @@ function Sobre() {
       <br />
 
       {/* Seção Sobre Nós */}
+    <div className="mr-60 ml-60 text-justify">
       <section className="sobre">
         <h2 className="sobredev">Sobre a DEVfit</h2>
         <p className="">
@@ -290,6 +291,7 @@ function Sobre() {
         </Slider>
       </section>
     </div>
+  </div>
   );
 }
 
