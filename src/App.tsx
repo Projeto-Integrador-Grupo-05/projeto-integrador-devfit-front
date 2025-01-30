@@ -7,6 +7,7 @@ import Perfil from "./pages/perfil/Perfil";
 import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import Cadastro from "./pages/cadastro/Cadastro";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/perfil" element={<Perfil />} />
+              <Route path="/about" element={<About />} />
             </Routes>
           </BrowserRouter>
         </AuthProvider>
