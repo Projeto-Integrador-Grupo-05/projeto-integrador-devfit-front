@@ -9,15 +9,9 @@
 }
 
 .cadastroInput {
-  @apply block w-56 py-2.5 px-0 text-sm
-   text-white bg-transparent border-0 
-   border-b-2 border-gray-500 appearance-none 
-   focus:outline-none focus:ring-0 focus:border-gray-100;
+  @apply block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-gray-100;
 }
 
 .cadastroLabel {
-  @apply absolute text-sm text-gray-200 duration-300 transform 
-  -translate-y-4 scale-75 top-3 left-2 peer-placeholder-shown:translate-y-2 
-  peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-4
- peer-focus:text-gray-50;
+  @apply absolute text-sm text-gray-200 duration-300 transform -translate-y-4 scale-75 top-3 left-2 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-gray-50;
 }
