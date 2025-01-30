@@ -97,7 +97,7 @@ function FormTreino() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="number">frequencia Semanal</label>
+          <label htmlFor="number">Frequencia Semanal</label>
           <input
             type="number"
             placeholder="Nome Treino"

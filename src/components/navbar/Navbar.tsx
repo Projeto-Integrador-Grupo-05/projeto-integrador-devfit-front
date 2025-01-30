@@ -6,11 +6,11 @@ import { ToastAlerta } from "../../utils/ToastAlerta";
 function Navbar() {
   const navigate = useNavigate();
   const { usuario, handleLogout } = useContext(AuthContext);
-  const location = useLocation(); // Pega a localização (rota) atual
+  const location = useLocation(); 
 
-  // Verifica se a rota atual é '/login' ou '/cadastro'
+  
   if (location.pathname === "/login" || location.pathname === "/cadastro") {
-    return null; // Não renderiza o Navbar nessas rotas
+    return null; 
   }
 
   function logout() {
@@ -21,7 +21,7 @@ function Navbar() {
 
   let component: ReactNode;
 
-  // Se o usuário estiver logado (com token), renderiza o navbar de logged-in
+ 
   if (usuario.token !== "") {
     component = (
       <header className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
@@ -59,6 +59,14 @@ function Navbar() {
                     className="text-white hover:text-yellow-500"
                   >
                     ÁREA DO ALUNO
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-white hover:text-yellow-500"
+                  >
+                    SOBRE NÒS
                   </Link>
                 </li>
               </ul>
