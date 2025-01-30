@@ -1,12 +1,11 @@
 import { ReactNode, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext";
 import { ToastAlerta } from "../../utils/ToastAlerta";
 
-function Navbar() {
-  const navigate = useNavigate();
-
-  const { usuario, handleLogout } = useContext(AuthContext);
+function Navbar (){
+    const navigate = useNavigate();
+    const { usuario, handleLogout } = useContext(AuthContext);
 
   function logout() {
     handleLogout();
@@ -18,38 +17,32 @@ function Navbar() {
 
   if (usuario.token !== "") {
     component = (
-      <div
-        className="w-full bg-gradient-to-r from-purple-400 from-10% via-purple-600 via-30% to-purple-800 to-60% text-white
-                flex justify-center py-4"
-      >
-        <div className="container flex justify-between text-lg">
-          <Link to="/home" className="text-2xl font-bold">
-            Blog Pessoal
-          </Link>
-
-          <div className="flex gap-4">
-            <Link to="/treino" className="hover:underline">
-              Treino
-            </Link>
-            <Link to="/temas" className="hover:underline">
-              Temas
-            </Link>
-            <Link to="/cadastrartema" className="hover:underline">
-              Cadastrar tema
-            </Link>
-            <Link to="/perfil" className="hover:underline">
-              Perfil
-            </Link>
-            <Link to="" onClick={logout} className="hover:underline">
-              Sair
-            </Link>
+        <header id="header" className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex items-center justify-between">
+              <Link to="/#" className="text-white text-2xl">
+                <i></i>
+              </Link>
+    
+              <nav>
+                <ul className="flex space-x-12">
+                  <li><Link to="/#" className="text-white hover:text-yellow-500 ">EXERCÍCIOS</Link></li>
+                  <li><Link to="/treino" className="text-white hover:text-yellow-500">TREINOS</Link></li>
+                  <li><Link to="/perfil" className="text-white hover:text-yellow-500">ÁREA DO ALUNO</Link></li>
+                </ul>
+              </nav>
+    
+              <div>
+                <Link to="/cadastro">
+                  <button className="w-32 h-10 bg-orange-400 hover:bg-orange-600 text-white font-bold rounded transition-all duration-200">
+                    MATRICULE-SE
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    );
+        </header>
+      );
+    } return<>{component}</>
   }
-
-  return <>{component}</>;
-}
-
 export default Navbar;
