@@ -1,215 +1,165 @@
-import { useState, useContext, useEffect, ChangeEvent } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
-import Treino from "../../../models/Treino";
+import { useState, useEffect, ChangeEvent, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { cadastrar, buscar } from "../../../services/Service";
 import Exercicios from "../../../models/Exercicios";
-import { buscar, atualizar, cadastrar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { AuthContext } from "../../../context/AuthContext";
 
 function FormTreino() {
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [exercicio, setExercicio] = useState<Exercicios[]>([]);
-
-  const [exercicios, setExercicios] = useState<Exercicios>({
-    id: 0,
+  const [exercicios, setExercicios] = useState<Exercicios[]>([]);
+  const [treino, setTreino] = useState({
+    titulo: "",
     descricao: "",
-    nome: "",
-    grupoMuscular: "",
-    nivelDificuldade: "",
-    tempoEstimado: 0,
+    exercicios: [] as Exercicios[], 
   });
-  const [treino, setTreino] = useState<Treino>({} as Treino);
 
-  const { id } = useParams<{ id: string }>();
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const token = usuario.token;
 
-  const { usuario, handleLogout } = useContext(AuthContext);
-  const token = usuario.token;
-
-  async function buscarTreinoPorId(id: string) {
-    try {
-      await buscar(`/treino/${id}`, setTreino, {
-        headers: { Authorization: token },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
+    useEffect(() => {
+      if (token === "") {
+        alert("Você precisa estar logado");
+        navigate("/");
       }
-    }
-  }
-
-  async function buscarExerciciosPorId(id: string) {
-    try {
-      await buscar(`/exercicios/${id}`, setExercicio, {
-        headers: { Authorization: token },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
-      }
-    }
-  }
-
-  async function buscarExercicios() {
-    try {
-      await buscar("/exercicios", setExercicios, {
-        headers: { Authorization: token },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
-      }
-    }
-  }
-
+    }, [token]);
+    
   useEffect(() => {
-    if (token === "") {
-      alert("Você precisa estar logado");
-      navigate("/");
+    async function buscarExercicios() {
+      try {
+        await buscar("/exercicio", setExercicios, {
+          headers: { Authorization: token },
+        });
+      } catch (error : any) {
+        if (error.toString().includes("403")) {
+          handleLogout();
+        }
+      }
     }
-  }, [token]);
 
-  useEffect(() => {
     buscarExercicios();
-
-    if (id !== undefined) {
-      buscarTreinoPorId(id);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    setTreino({
-      ...treino,
-      exercicios: exercicios,
-    });
-  }, [exercicios]);
+  }, []);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-    setTreino({
-      ...treino,
-      [e.target.name]: e.target.value,
-      exercicios: exercicios,
-      usuario: usuario,
-    });
+    setTreino({ ...treino, [e.target.name]: e.target.value });
   }
 
-  function retornar() {
-    navigate("/treino");
+  function selecionarExercicio(e: ChangeEvent<HTMLSelectElement>) {
+    const exercicioSelecionado = exercicios.find((ex) => ex.id === Number(e.target.value));
+    if (exercicioSelecionado) {
+      setTreino({
+        ...treino,
+        exercicios: [...treino.exercicios, exercicioSelecionado], 
+      });
+    }
   }
 
-  async function gerarNovaTreino(e: ChangeEvent<HTMLFormElement>) {
+  async function gerarNovoTreino(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
 
-    if (id !== undefined) {
-      try {
-        await atualizar(`/treino`, treino, setTreino, {
-          headers: {
-            Authorization: token,
-          },
-        });
+    try {
+      await cadastrar("/treino", treino, setTreino, {
+        headers: {
+          Authorization: token
+        },
+      });
 
-        alert("Treino atualizada com sucesso");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          handleLogout();
-        } else {
-          alert("Erro ao atualizar a Treino");
-        }
-      }
-    } else {
-      try {
-        await cadastrar(`/treino`, treino, setTreino, {
-          headers: {
-            Authorization: token,
-          },
-        });
-
-        alert("Treino cadastrada com sucesso");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          handleLogout();
-        } else {
-          alert("Erro ao cadastrar a Treino");
-        }
+      alert("Treino cadastrado com sucesso!");
+      navigate("/"); 
+    } catch (error : any) {
+      if (error.toString().includes("403")) {
+        handleLogout();
       }
     }
-
     setIsLoading(false);
-    retornar();
   }
-
-  const carregandoExercicios = exercicios.descricao === "";
 
   return (
     <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8">
-        {id !== undefined ? "Editar Treino" : "Cadastrar Treino"}
-      </h1>
+      <h1 className="text-4xl text-center my-8">Criar Treino</h1>
 
-      <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaTreino}>
+      <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovoTreino}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Título da Treino</label>
+          <label htmlFor="titulo">Título do Treino</label>
           <input
             type="text"
-            placeholder="Titulo"
+            placeholder="Título"
             name="titulo"
             required
             className="border-2 border-slate-700 rounded p-2"
-            value={treino.nomeTreino}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            value={treino.titulo}
+            onChange={atualizarEstado}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Texto da Treino</label>
+          <label htmlFor="descricao">Descrição do Treino</label>
           <input
             type="text"
-            placeholder="Texto"
-            name="texto"
+            placeholder="Descrição"
+            name="descricao"
             required
             className="border-2 border-slate-700 rounded p-2"
             value={treino.descricao}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            onChange={atualizarEstado}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <p>Exercicios da Treino</p>
+          <label htmlFor="exercicios">Selecione os Exercícios</label>
           <select
-            name="Exercicios"
-            id="Exercicios"
+            name="exercicios"
             className="border p-2 border-slate-800 rounded"
-            onChange={(e) => buscarExerciciosPorId(e.currentTarget.value)}
+            onChange={selecionarExercicio}
           >
-            <option value="" selected disabled>
-              Selecione um Exercicios
+            <option value="" disabled>
+              Selecione um Exercício
             </option>
-
-            {exercicio.map((exercicios) => (
-              <>
-                <option value={exercicios.id}>{exercicios.descricao}</option>
-              </>
+            {exercicios.map((exercicio) => (
+              <option key={exercicio.id} value={exercicio.id}>
+                {exercicio.descricao}
+              </option>
             ))}
           </select>
-        </div>
-        <button
-          type="submit"
-          className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800
-                               text-white font-bold w-1/2 mx-auto py-2 flex justify-center"
-          disabled={carregandoExercicios}
-        >
-          {isLoading ? (
-            <RotatingLines
-              strokeColor="white"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="24"
-              visible={true}
-            />
-          ) : (
-            <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>
+
+          {treino.exercicios.length > 0 && (
+            <ul className="mt-2">
+              {treino.exercicios.map((ex, index) => (
+                <li key={index} className="text-sm text-gray-700">
+                  ✅ {ex.descricao}
+                </li>
+              ))}
+            </ul>
           )}
-        </button>
+
+        </div>
+        <div className="flex justify-between w-full">
+          <button
+            type="button"
+            className="rounded bg-gray-400 hover:bg-gray-600 text-white font-bold px-6 py-2"
+            onClick={() => navigate("/home")}
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            className="rounded bg-orange-500 hover:bg-orange-700 text-white font-bold px-6 py-2 flex justify-center"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="24"
+                visible={true}
+              />
+            ) : (
+              <span>Criar Treino</span>
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );
