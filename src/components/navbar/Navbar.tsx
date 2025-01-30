@@ -20,13 +20,13 @@ function Navbar (){
         <header id="header" className="w-full top-0 left-0 transition-all duration-500 bg-black py-4">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between">
-              <Link to="/#" className="text-white text-2xl">
-                <i></i>
+              <Link to="/home" className="text-white text-2xl">
+                <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit"></img>
               </Link>
     
               <nav>
                 <ul className="flex space-x-12">
-                  <li><Link to="/#" className="text-white hover:text-yellow-500 ">EXERCÍCIOS</Link></li>
+                  <li><Link to="/listaexercicios" className="text-white hover:text-yellow-500 ">EXERCÍCIOS</Link></li>
                   <li><Link to="/treino" className="text-white hover:text-yellow-500">TREINOS</Link></li>
                   <li><Link to="/perfil" className="text-white hover:text-yellow-500">ÁREA DO ALUNO</Link></li>
                 </ul>

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FacebookLogo, InstagramLogo, TiktokLogo, LinkedinLogo} from "@phosphor-icons/react";
-import { ToastAlerta } from "../../utils/ToastAlerta";
 import { ReactNode, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -8,12 +7,6 @@ const Footer = () => {
 
   const navigate = useNavigate();
     const { usuario, handleLogout } = useContext(AuthContext);
-
-  function logout() {
-    handleLogout();
-    ToastAlerta("O Usuário foi desconectado com sucesso!", "info");
-    navigate("/");
-  }
 
   let component: ReactNode;
 
@@ -28,16 +21,16 @@ const Footer = () => {
           <h3 className="font-bold text-lg mb-2">NAVEGUE</h3>
           <ul className="space-y-1">
             <li><a href="perfil" className="hover:text-yellow-500">Área do Cliente</a></li>
-            <li><a href="" className="hover:text-yellow-500">Grade de Exercicios</a></li>
-            <li><a href="#" className="hover:text-yellow-500">Sobre Nós</a></li>
-            <li><a href="#" className="hover:text-yellow-500">Treinos</a></li>
+            <li><a href="/listaexercicios" className="hover:text-yellow-500">Grade de Exercicios</a></li>
+            <li><a href="about" className="hover:text-yellow-500">Sobre Nós</a></li>
+            <li><a href="treino" className="hover:text-yellow-500">Treinos</a></li>
           </ul>
         </div>
 
         {/* Logo */}
         <div className="flex flex-col items-center">
           <div className="bg-gray-100 p-3 rounded-lg">
-            <Link to="#"><img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit" className="w-14 h-14" /></Link>
+            <img src="https://i.imgur.com/RhVXHKF.png" alt="Logo DevFit" className="w-14 h-14" />
           </div>
         </div>
 
